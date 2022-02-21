@@ -22,3 +22,8 @@ The main aim of this to have a basic structure, which can be easily adjusted to 
 - Tested under Linux Mint (should work in any linux distro, as well as on Windows and Mac) 
 - IMPORTANT: In `makefile`, when using `\` to split code into multiple lines, no space should follow `\`. Otherwise Gnu make aborts with error 193. 
 - Many possible improvements remain. Comments and contributions are welcome!
+
+
+
+This is a line from RStudio.
+
