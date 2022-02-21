@@ -2,6 +2,8 @@ setwd("/Users/saadanwar/Documents/uvt/dprep")
 calendar <- read.csv("calendar.csv")
 #calendar; dates of listings with availability, price, min and max nights
 
+#to do
+#per listing first availability date
 
 listings <- read.csv("listings.csv") 
 listings2 <- read.csv("listings-2.csv")
@@ -13,11 +15,6 @@ reviews<- read.csv("reviews.csv")
 reviews2 <-read.csv("reviews-2.csv")
 # note that id here is not the same as id in the listings sheet
 # id in listings is the same as id_listings in reviews2
-
-
-#about the crime data:
-#we have data available per neighbourhood or per crime, the data of all crimes
-#and all neighbourhoods together is weekly and very short
 
 #read in crime data
 crime <- read.csv("NYPD_Complaint_Data_Historic.csv")
