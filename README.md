@@ -27,3 +27,5 @@ The main aim of this to have a basic structure, which can be easily adjusted to 
 
 This is a line from RStudio.
 
+This is another line 
+
