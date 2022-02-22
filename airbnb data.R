@@ -1,9 +1,16 @@
 setwd("/Users/saadanwar/Documents/uvt/dprep")
+library(data.table)
+library(dplyr)
 calendar <- read.csv("calendar.csv")
 #calendar; dates of listings with availability, price, min and max nights
+calendar$date =as.Date(calendar$date, format = "%Y-%m-%d")
 
-#to do
-#per listing first availability date
+
+#per listing first and last availability date
+unique_listings <- unique(calendar$listing_id)
+first_availabilty_listings <- aggregate(date ~ listing_id, calendar, function(x) min(x))
+last_availabilty_listings <- aggregate(date ~ listing_id, calendar, function(x) max(x))
+
 
 listings <- read.csv("listings.csv") 
 listings2 <- read.csv("listings-2.csv")
@@ -23,6 +30,9 @@ crime_sub <- crime[,c('CMPLNT_NUM', 'ADDR_PCT_CD', 'BORO_NM','CMPLNT_FR_DT','CMP
 
 #Crimes where the location is not defined neither is a latitude or longitude given
 temp <- crime_sub[crime_sub$BORO_NM =='' & (is.na(crime_sub$Latitude) | is.na(crime_sub$Longitude)),]
+#delete those from the data
+crime_sub <- crime_sub[-c(as.numeric(row.names(temp))),]
+
 
 #Change dates from characters to Date object
 crime_sub$CMPLNT_FR_DT = as.Date(crime_sub$CMPLNT_FR_DT, format = "%m/%d/%Y")
@@ -53,6 +63,7 @@ boxplot(crime_sub$RPT_DT, main = "Date event was reported to police",
 
 #to compute:
 #number of listings per neighbourhood (crime data and airbnb listing)
+
 #check for correlation between different type of crimes and the number of listings in NY
 #correlation between listings rates and crimes
 
