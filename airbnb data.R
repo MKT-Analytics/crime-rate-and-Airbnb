@@ -34,6 +34,11 @@ temp <- crime_sub[crime_sub$BORO_NM =='' & (is.na(crime_sub$Latitude) | is.na(cr
 crime_sub <- crime_sub[-c(as.numeric(row.names(temp))),]
 
 
+#retieve Longitudes and latitudes of the different neighbourhoods
+neighbourhoods_coordinates <- crime_sub[,c('BORO_NM','Latitude','Longitude')]
+neighbourhoods_coordinates <-na.omit(neighbourhoods_coordinates)
+x = neighbourhoods_coordinates %>% group_by(BORO_NM) %>% summarise(min_lat = min(Latitude), max_lat =max(Latitude), min_lon= min(Longitude), max_lon= max(Longitude))
+
 #Change dates from characters to Date object
 crime_sub$CMPLNT_FR_DT = as.Date(crime_sub$CMPLNT_FR_DT, format = "%m/%d/%Y")
 crime_sub$CMPLNT_TO_DT = as.Date(crime_sub$CMPLNT_TO_DT, format = "%m/%d/%Y")
