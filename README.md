@@ -1,31 +1,10 @@
-# Example of reproducible research workflow 
+# Research motivation
+The growth in popularity of peer-to-peer rental platforms such as Airbnb in recent years has brough several benefits but also concerns to the neighbourhoods. One of the major concerns is the crime rate in the neighbourhoods around Airbnb rental properties. Not only the people living in these areas get affected in terms of their safety, but also crime has to be shown to have a negative effect on property values and businesses (Lens and Meltzer, 2016). Thefore, it is important to investigate how the growth of AirBnB affects the crime rate. For the purpose of this study, an example of in New York City will be used. The data on Airbnb listings in NY City is available on Inside Airbnb and the complaint data reported to the New York City Police is available on NYC Open Data.
 
-This is a basic example repository using Gnu make for a reproducible research workflow, as described in detail here: [tilburgsciencehub.com](http://tilburgsciencehub.com/). 
-
-The main aim of this to have a basic structure, which can be easily adjusted to use in an actual project.  In this example project, the following is done: 
-1. Download and prepare data
-2. Run some analysis
-3. Present results in a final pdf generated using LaTeX
-
-## Dependencies
-- R 
-- R packages: 
-	install.packages("stargazer")
-- Gnu make 
-- TeX distribution (I use TeX Live 2019) 
-- For the `makefile` to work, R, Gnu make and the TeX distribution (specifically `pdflatex`) need to be made available in the system path 
-- Detailed installation instructions can be found here: [tilburgsciencehub.com](http://tilburgsciencehub.com/)
+# Methodology
+The investigated time span is from X till X. All data is daily/monthly etc. 
+Regression analysis
 
 
-## Notes
-- `make clean` removes all unncessary temporary files. 
-- Tested under Linux Mint (should work in any linux distro, as well as on Windows and Mac) 
-- IMPORTANT: In `makefile`, when using `\` to split code into multiple lines, no space should follow `\`. Otherwise Gnu make aborts with error 193. 
-- Many possible improvements remain. Comments and contributions are welcome!
-
-
-
-This is a line from RStudio.
-
-This is another line 
-
+# Sources
+Lens, M. C. and Meltzer, R. (2016). Is crime bad for business? crime and commercial property values in new york city. Journal of Regional Science, 56(3):442–470.
