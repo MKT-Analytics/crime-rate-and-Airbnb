@@ -6,11 +6,6 @@ calendar <- read.csv("calendar.csv")
 calendar$date =as.Date(calendar$date, format = "%Y-%m-%d")
 
 
-#per listing first and last availability date
-unique_listings <- unique(calendar$listing_id)
-first_availabilty_listings <- aggregate(date ~ listing_id, calendar, function(x) min(x))
-last_availabilty_listings <- aggregate(date ~ listing_id, calendar, function(x) max(x))
-
 
 listings <- read.csv("listings.csv") 
 listings2 <- read.csv("listings-2.csv")
@@ -22,6 +17,12 @@ reviews<- read.csv("reviews.csv")
 reviews2 <-read.csv("reviews-2.csv")
 # note that id here is not the same as id in the listings sheet
 # id in listings is the same as id_listings in reviews2
+
+
+#per listing first and last availability date
+unique_listings <- unique(calendar$listing_id)
+first_availabilty_listings <- aggregate(date ~ listing_id, calendar, function(x) min(x))
+last_availabilty_listings <- aggregate(date ~ listing_id, calendar, function(x) max(x))
 
 #read in crime data
 crime <- read.csv("NYPD_Complaint_Data_Historic.csv")
@@ -37,7 +38,17 @@ crime_sub <- crime_sub[-c(as.numeric(row.names(temp))),]
 #retieve Longitudes and latitudes of the different neighbourhoods
 neighbourhoods_coordinates <- crime_sub[,c('BORO_NM','Latitude','Longitude')]
 neighbourhoods_coordinates <-na.omit(neighbourhoods_coordinates)
-x = neighbourhoods_coordinates %>% group_by(BORO_NM) %>% summarise(min_lat = min(Latitude), max_lat =max(Latitude), min_lon= min(Longitude), max_lon= max(Longitude))
+neighbourhoods_lonlat = neighbourhoods_coordinates %>% group_by(BORO_NM) %>% summarise(min_lat = min(Latitude), max_lat =max(Latitude), min_lon= min(Longitude), max_lon= max(Longitude))
+neighbourhoods_lonlat <- neighbourhoods_lonlat[-c(1),]
+
+
+#for crime_sub[crime_sub$BORO_NM =='',] in crime_sub{
+#  if (as.numeric(crime_sub$Longitude) < as.numeric(neighbourhoods_lonlat$max_lon) & crime_sub$Longitude > neighbourhoods_lonlat$min_lon & crime_sub$Latitude < neighbourhoods_lonlat$max_lat & crime_sub$Latitude > neighbourhoods_lonlat$min_lat){
+#    print(neighbourhoods_lonlat$BORO_NM)
+#  }
+#}
+
+crime_sub_notreplaced <-crime_sub[!(crime_sub$BORO_NM ==''),]
 
 #Change dates from characters to Date object
 crime_sub$CMPLNT_FR_DT = as.Date(crime_sub$CMPLNT_FR_DT, format = "%m/%d/%Y")
@@ -69,6 +80,25 @@ boxplot(crime_sub$RPT_DT, main = "Date event was reported to police",
 #to compute:
 #number of listings per neighbourhood (crime data and airbnb listing)
 
+number_listings <- listings2 %>% 
+  group_by(neighbourhood_group) %>% 
+  summarise(count = n())
+
+crime_count <-  
+  crime_sub_notreplaced %>% 
+  group_by(BORO_NM) %>% 
+  summarise(count = n())
+
+number_listings$crime_count <- crime_count$count
+
+
+#crime types by neighbourhood
+crime_sub_notreplaced %>% 
+  group_by(BORO_NM, LAW_CAT_CD) %>% 
+  summarise(count = n())
+
+
 #check for correlation between different type of crimes and the number of listings in NY
 #correlation between listings rates and crimes
+
 
