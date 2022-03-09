@@ -1,6 +1,6 @@
 # Project title
 
-A subtitle that describes your project, e.g., research question
+Investigating the influence of crime rate in New York City on the number of Airbnb listings per neighberhood.
 
 ## Research motivation
 *Motivate your research question or business problem. Clearly explain which problem is solved.*
