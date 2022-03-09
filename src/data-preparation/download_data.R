@@ -7,7 +7,7 @@ download.file('http://data.insideairbnb.com/united-states/ny/new-york-city/2021-
 
 # Download dataset 3 - 	Neighbourhood list for geo filter. Sourced from city or open source GIS files.
 dir.create('./data/dataset3')
-download.file('http://data.insideairbnb.com/united-states/ny/new-york-city/2021-12-04/visualisations/neighbourhoods.csv','./data/dataset1/dataset2.csv')
+download.file('http://data.insideairbnb.com/united-states/ny/new-york-city/2021-12-04/visualisations/neighbourhoods.csv','./data/dataset1/dataset3.csv')
 
 
 # Download dataset 4 - 	NYPD Complaint Data Historic
