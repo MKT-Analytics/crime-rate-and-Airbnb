@@ -11,7 +11,6 @@ download.file('http://data.insideairbnb.com/united-states/ny/new-york-city/2021-
 
 
 # Download dataset 4 - 	NYPD Complaint Data Historic
-#This dataset includes all valid felony, misdemeanor, and violation crimes reported to the New York City Police Department (NYPD) from 2006 to the end of last year (2019).
 dir.create('./data/dataset4')
 download.file('https://data.cityofnewyork.us/api/views/qgea-i56i/rows.csv?accessType=DOWNLOAD','./data/dataset2/dataset4.csv')
 
