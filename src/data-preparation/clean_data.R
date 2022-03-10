@@ -1,5 +1,8 @@
-# Load merged data 
-load("./gen/data-preparation/temp/data_merged.RData")
+# Load data 
+load("./gen/data-preparation/temp/dataset1.RData")
+load("./gen/data-preparation/temp/dataset2.RData")
+load("./gen/data-preparation/temp/dataset3.RData")
+load("./gen/data-preparation/temp/dataset4.RData")
 
 library(data.table)
 library(dplyr)
