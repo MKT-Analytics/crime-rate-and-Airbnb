@@ -97,6 +97,8 @@ crime_sub_notreplaced %>%
   group_by(BORO_NM, LAW_CAT_CD) %>% 
   summarise(count = n())
 
+modelDV1_m1<-lm(number_listings~ ., data=crime_sub )
+
 
 #check for correlation between different type of crimes and the number of listings in NY
 #correlation between listings rates and crimes
