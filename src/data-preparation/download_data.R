@@ -1,3 +1,6 @@
+setwd("C:/Users/ambro/Desktop/Dprep project/crime-rate-and-Airbnb")
+dir.create('./data')
+
 # Download dataset 1 - 	Detailed Calendar Data for listings in New York City
 dir.create('./data/dataset1')
 download.file('http://data.insideairbnb.com/united-states/ny/new-york-city/2021-12-04/data/calendar.csv.gz','./data/dataset1/dataset1.csv')
@@ -15,4 +18,3 @@ download.file('http://data.insideairbnb.com/united-states/ny/new-york-city/2021-
 # Download dataset 4 - 	NYPD Complaint Data Historic
 dir.create('./data/dataset4')
 download.file('https://data.cityofnewyork.us/api/views/qgea-i56i/rows.csv?accessType=DOWNLOAD','./data/dataset4/dataset4.csv')
-
