@@ -1,5 +1,4 @@
-setwd("C:/Users/ambro/Desktop/Dprep project/crime-rate-and-Airbnb")
-dir.create('./data')
+dir.create('../../data')
 
 # Download dataset 1 - 	Detailed Calendar Data for listings in New York City
 dir.create('./data/dataset1')
