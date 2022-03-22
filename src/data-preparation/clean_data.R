@@ -69,5 +69,5 @@ boxplot(crime_sub$RPT_DT, main = "Date event was reported to police",
 
 
 # Save cleaned data
-dir.create('../../gen/data-preparation/input/')
-save(df_cleaned,file="../../gen/data-preparation/input/data_cleaned.RData")
+dir.create('../../gen/data-preparation/output/')
+save(df_cleaned,file="../../gen/data-preparation/output/data_cleaned.RData")
