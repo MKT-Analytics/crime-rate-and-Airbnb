@@ -5,6 +5,7 @@ crime_data <- read.csv("../../data/NYC-OpenData/NYPD-complaint.csv")
 
 
 # Save data
+dir.create('../../gen/data-preparation/temp/')
 save(calendar,file="../../gen/data-preparation/temp/calendar.RData")
 save(listings,file="../../gen/data-preparation/temp/listings.RData")
 save(neighbourhoods,file="../../gen/data-preparation/temp/neighbourhoods.RData")
