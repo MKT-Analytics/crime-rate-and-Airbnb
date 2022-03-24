@@ -1,8 +1,7 @@
 ---
-title: "Data Preparation NYC"
-author: "Team 99"
-date: "3/21/2022"
-output: html_document
+Title: "Data Preparation NYC"
+Author: "Team 99"
+Date: "3/24/2022"
 ---
 
 ```{r setup, include=FALSE}
