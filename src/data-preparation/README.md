@@ -53,7 +53,7 @@ neighbourhood_count$neighbourhood_group <- paste0(neighbourhood_count$neighbourh
 pie(neighbourhood_count$count,neighbourhood_count$neighbourhood_group, main= "listings per neighbourhood")
 ```
 
-####Crime data 
+#### Crime data 
 The crime data consists of 7375993 rows of crimes comitted in New York City.
 ```{r}
 head(crime_data)
@@ -64,7 +64,7 @@ There are 35 different variables. The ones that are most relevant are selected.
 crime_data<- crime_data[,c('CMPLNT_NUM', 'ADDR_PCT_CD', 'BORO_NM','CMPLNT_FR_DT','CMPLNT_TO_DT','CRM_ATPT_CPTD_CD','KY_CD','LAW_CAT_CD','OFNS_DESC','RPT_DT','Latitude','Longitude')]
 head(crime_data)
 ```
-####Dictionary of the variables:
+#### Dictionary of the variables:
 Column name         | Column description
 -------------       | -------------
 CMPLNT_NUM          | Randomly generated persistent ID for each complaint 
@@ -146,7 +146,7 @@ ggplot(crime_cat,
   xlab("neighbourhood") + ylab("Count") +labs(fill="Category")
 ```
 
-##Data Cleaning
+## Data Cleaning
 As seen from above barchart and piechart there are some crimes where no borough/neigbourhood is mentioned. This are 11329 crimes. These will be deleted from the dataset.
 ```{r}
 #number of missing neighbourhoods
@@ -158,10 +158,10 @@ crime_data_cleaned <-crime_data[!(crime_data$BORO_NM ==''),]
 ```
 
 
-##store the cleaned data
+## Store the cleaned data
 ```{r}
 dir.create('../../gen/data-preparation/output/')
-fwrite(crime_data_cleaned, '../../gen/data-preparation/output/crime_data_cleaned.csv')
+save(df_cleaned,file="../../gen/data-preparation/output/data_cleaned.RData")
 ```
 
 
