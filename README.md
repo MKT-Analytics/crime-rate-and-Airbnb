@@ -6,23 +6,11 @@ Investigating the influence of crime rate in New York City on the number of AirB
 The growth in popularity of peer-to-peer rental platforms such as AirBnB in recent years has brough several benefits but also concerns to the neighbourhoods. One of the major concerns is the crime rate in the neighbourhoods around AirBnB rental properties. Not only the people living in these areas get affected in terms of their safety, but also crime has to be shown to have a negative effect on property values and businesses (Lens and Meltzer, 2016). Thefore, it is important to investigate how the growth of AirBnB affects the crime rate. For the purpose of this study, an example of in New York City will be used. The data on AirBnB listings in NY City is available on Inside AirBnB and the complaint data reported to the New York City Police is available on NYC Open Data.
 
 ## Methodology
-In order to properly investigate the influence of neighboorhood crime on the number of AirBnB listings, the dataset of AirBnB listings and a dataset of neighboorhood crime in New York City need to be combined. The listings and crimes are grouped per neighboorhood. As regarding the listings, the listing id's and date are used with their first and last available date in order to see when aparticular was removed. The data from the neighboorhood crime dataset is also cleaned. A selection of relevant variables is made. Our chosen statistical method for this assignment is a multiple linear regression. Linear regression analysis is the process of using various of statistical methods that are used to approximately calculate the relationships between dependent and independent variables. Using a multiple linear regression analyis, we aim to estimate to what extent the independent variables CMPLNT_NUM,ADDR_PCT_CD,BORO,CMPLNT_FR_DT,CMPLNT_TO_DT,CRM_ATPT_CPTD_CD,KY_CD,LAW_CAT_CD,OFNS_DESC,RPT_DT,Latitude,Longitude,RPT_DT influences the dependent variable, number of listings of an AirBnb.
+In order to properly investigate the influence of neighboorhood crime on the number of AirBnB listings, the dataset of AirBnB listings and a dataset of neighboorhood crime in New York City need to be combined. The listings and crimes are grouped per neighboorhood. As regarding the listings, the listing id's and date are used with their first and last available date in order to see when aparticular was removed. The data from the neighboorhood crime dataset is also cleaned. A selection of relevant variables is made. Our chosen statistical method for this assignment is a multiple linear regression. Linear regression analysis is the process of using various of statistical methods that are used to approximately calculate the relationships between dependent and independent variables. Using a multiple linear regression analyis, we aim to estimate to what extent the independent variables CMPLNT_NUM,ADDR_PCT_CD,BORO,CMPLNT_FR_DT,CMPLNT_TO_DT,CRM_ATPT_CPTD_CD,KY_CD,LAW_CAT_CD,OFNS_DESC,RPT_DT,Latitude,Longitude,RPT_DT influences the dependent variable, number of listings of an AirBnb. The descriptions of the aforementioned independent variables can be found in the Rmarkdown file.
 
 
 
- CMPLNT_NUM          | Randomly generated persistent ID for each complaint 
-ADDR_PCT_CD         | The precinct in which the incident occurred
-BORO                | The name of the borough in which the incident occurred
-CMPLNT_FR_DT        | Exact date of occurrence for the reported event (or starting date of occurrence, if CMPLNT_TO_DT exists)
-CMPLNT_TO_DT        | Ending date of occurrence for the reported event, if exact time of occurrence is unknown
-CRM_ATPT_CPTD_CD    | Indicator of whether crime was successfully completed or attempted, but failed or was interrupted prematurely
-KY_CD               | Three digit offense classification code
-LAW_CAT_CD          | Level of offense: felony, misdemeanor, violation 
-OFNS_DESC           | Description of offense corresponding with key code
-RPT_DT              | Date event was reported to police 
-Latitude            | Midblock Latitude coordinate for Global Coordinate System, WGS 1984, decimal degrees (EPSG 4326) 
-Longitude           | Midblock Longitude coordinate for Global Coordinate System, WGS 1984, decimal degrees (EPSG 4326)
-
+ 
 
 
 
