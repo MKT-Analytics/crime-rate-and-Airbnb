@@ -60,8 +60,7 @@ Second, summarize your results concisely. Make use of subheaders where appropria
 ## Sources
 Lens, M. C. and Meltzer, R. (2016). Is crime bad for business? crime and commercial property values in new york city. Journal of Regional Science, 56(3):442-470.
 
-Related article: https://thecrimereport.org/2021/08/06/is-there-a-link-between-airbnb-and-neighborhood-crime-rates/#:~:text=An%20earlier%20study%20of%20Airbnb,types%2C%20rather%20than%20entire%20homes.
-
+Related article: “Is There a Link Between Airbnb and Neighborhood Crime Rates?” The Crime Report, 2021, p. 1
 
 ## About
 This projet was done for the course 'Data Preparation and Workflow Management' at Tilburg University on the datasets of ´Inside Airbnb´.
