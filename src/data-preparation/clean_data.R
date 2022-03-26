@@ -20,7 +20,7 @@ head(listings)
 head(listings_2)
 
 unique(listings$neighbourhood_group) 
-neighbourhood_count <- listings %>% group_by(neighbourhood_group) %>% summarize(count=n())
+neighbourhood_count <- listings_2 %>% group_by(neighbourhood_group) %>% summarize(count=n())
 percentages <- round(neighbourhood_count$count/sum(neighbourhood_count$count)*100, 2)
 percentages <- paste0(percentages, "%")
 neighbourhood_count$neighbourhood_group <- paste0(neighbourhood_count$neighbourhood_group, percentages )
@@ -84,4 +84,4 @@ crime_data_cleaned <-crime_data[!(crime_data$BORO_NM ==''),]
 
 #store the cleaned data
 dir.create('../../gen/data-preparation/output/')
-save(df_cleaned,file="../../gen/data-preparation/output/data_cleaned.RData")
+save(crime_data_cleaned,file="../../gen/data-preparation/output/data_cleaned.RData")
