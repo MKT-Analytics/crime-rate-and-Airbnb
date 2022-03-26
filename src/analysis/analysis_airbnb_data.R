@@ -10,7 +10,7 @@ number_listings <- listings_2 %>%
 names(number_listings)[names(number_listings) == 'count'] <- 'number_of_listings'
 
 for (year in years){
-  crime_count <- df_cleaned %>% 
+  crime_count <- crime_data_cleaned %>% 
     group_by(BORO_NM) %>% filter(year(CMPLNT_FR_DT) == year) %>%
     summarise(count = n()) 
   number_listings <- cbind(number_listings, crime_count[2])
