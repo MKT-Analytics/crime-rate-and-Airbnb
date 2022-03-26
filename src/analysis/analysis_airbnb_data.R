@@ -1,33 +1,22 @@
 library(data.table)
 library(dplyr)
-df_cleaned <- data.frame(fread("../../gen/data-preparation/output/data_cleaned.RData"))
+df_cleaned <- data.frame(fread('../../gen/input/crime_data_cleaned.csv'))
+listings_2 <- data.frame(fread("../../gen/data-preparation/temp/listings_2.RData"))
 
-# TO DO: make sure to have the code working directly from the cleaned data
-
-#to compute:
-#number of listings per neighbourhood (crime data and airbnb listing)
-
-number_listings <- listings2 %>% 
+years <- c(2016,2017,2018,2019,2020)
+number_listings <- listings_2 %>% 
   group_by(neighbourhood_group) %>% 
   summarise(count = n())
+names(number_listings)[names(number_listings) == 'count'] <- 'number_of_listings'
 
-crime_count <-  
-  crime_sub_notreplaced %>% 
-  group_by(BORO_NM) %>% 
-  summarise(count = n())
+for (year in years){
+  crime_count <- df_cleaned %>% 
+    group_by(BORO_NM) %>% filter(year(CMPLNT_FR_DT) == year) %>%
+    summarise(count = n()) 
+  number_listings <- cbind(number_listings, crime_count[2])
+  names(number_listings)[names(number_listings) == 'count'] <- paste('crime_count_',year)
+  number_listings<- cbind(number_listings, crime_count[2]/number_listings$number_of_listings)
+  names(number_listings)[names(number_listings) == 'count'] <- paste('crimes_per_listings_',year)
+}
 
-number_listings$crime_count <- crime_count$count
-
-
-#crime types by neighbourhood
-crime_sub_notreplaced %>% 
-  group_by(BORO_NM, LAW_CAT_CD) %>% 
-  summarise(count = n())
-
-modelDV1_m1<-lm(number_listings~ ., data=crime_sub )
-
-
-#check for correlation between different type of crimes and the number of listings in NY
-#correlation between listings rates and crimes
-
-
+View(number_listings)
