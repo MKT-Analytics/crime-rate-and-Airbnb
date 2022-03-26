@@ -1,7 +1,7 @@
 ---
 Title: "Data Preparation NYC"
 Author: "Team 99"
-Date: "3/24/2022"
+Date: "3/26/2022"
 ---
 
 ```{r setup, include=FALSE}
@@ -15,15 +15,15 @@ library(tidyverse)
 library(ggplot2)
 library(readr)
 library(data.table)
-library(R.utils)
 ```
 
 ```{r}
 # Import raw data
-calendar <- read.csv("calendar.csv")
-listings <- read.csv("listings.csv") 
-neighbourhoods <- read.csv("neighbourhoods.csv")
-crime_data <- read.csv("NYPD_Complaint_Data_Historic.csv")
+load("../../gen/data-preparation/temp/calendar.RData")
+load("../../gen/data-preparation/temp/listings.RData")
+load("../../gen/data-preparation/temp/listings_2.RData")
+load("../../gen/data-preparation/temp/neighbourhoods.RData")
+load("../../gen/data-preparation/temp/NYPD-complaint.RData")
 ```
 
 
@@ -35,11 +35,10 @@ Below an example of the data and the variables is shown:
 ```{r}
 head(listings)
 ```
-A lot of these variables are not needed and that is why we will use the listings-2 dataset that is provided.
+A lot of these variables are not needed and that is why we will use the listings_2 dataset that is provided.
 This looks as follows:
 ```{r}
-listings <- read.csv("listings-2.csv") 
-head(listings)
+head(listings_2)
 ```
 
 The most listings in NYC are in the neighbourhood Manhattan.
@@ -52,7 +51,7 @@ neighbourhood_count$neighbourhood_group <- paste0(neighbourhood_count$neighbourh
 pie(neighbourhood_count$count,neighbourhood_count$neighbourhood_group, main= "listings per neighbourhood")
 ```
 
-#### Crime data 
+####Crime data 
 The crime data consists of 7375993 rows of crimes comitted in New York City.
 ```{r}
 head(crime_data)
@@ -63,7 +62,7 @@ There are 35 different variables. The ones that are most relevant are selected.
 crime_data<- crime_data[,c('CMPLNT_NUM', 'ADDR_PCT_CD', 'BORO_NM','CMPLNT_FR_DT','CMPLNT_TO_DT','CRM_ATPT_CPTD_CD','KY_CD','LAW_CAT_CD','OFNS_DESC','RPT_DT','Latitude','Longitude')]
 head(crime_data)
 ```
-#### Dictionary of the variables:
+####Dictionary of the variables:
 Column name         | Column description
 -------------       | -------------
 CMPLNT_NUM          | Randomly generated persistent ID for each complaint 
@@ -87,7 +86,7 @@ crime_data$CMPLNT_TO_DT = as.Date(crime_data$CMPLNT_TO_DT, format = "%m/%d/%Y")
 crime_data$RPT_DT = as.Date(crime_data$RPT_DT, format = "%m/%d/%Y")
 ```
 
-From the below boxplots it can be concluded that there are some outliers in the date of occurence and the ending date of occurence, but in the boxplot where the event was reported to the police all dates are in a realistic timeframe. This means that all the data is reliable.  
+From the below boxplots it can be concluded that there are some outliers in the date of occurence and the ending date of occurence, but in the boxplot where the event was reported to the police all dates are in a realistic timeframe. This means that all the data is reliable. Moreover we are only interested in the crimes that occured in the past five years.
 ```{r}
 boxplot(crime_data$CMPLNT_FR_DT, main = "Date of occurence for the reported event",
         xlab = "years",
@@ -120,7 +119,7 @@ crimes_per_neighbourhood$BORO_NM <- paste0(crimes_per_neighbourhood$BORO_NM, per
 pie(crimes_per_neighbourhood$count,crimes_per_neighbourhood$BORO_NM, main= "crimes per neighbourhood")
 ```
 
-Misdemeanor is the most commited crim in all neighbourhoods in NYC. 
+Misdemeanor is the most commited crime in all neighbourhoods in NYC. 
 
 Types Of Criminal Charges In New York State:
 
@@ -145,8 +144,8 @@ ggplot(crime_cat,
   xlab("neighbourhood") + ylab("Count") +labs(fill="Category")
 ```
 
-## Data Cleaning
-As seen from above barchart and piechart there are some crimes where no borough/neigbourhood is mentioned. This are 11329 crimes. These will be deleted from the dataset.
+##Data Cleaning
+As seen from above barchart and piechart there are some crimes where no borough/neigbourhood is mentioned. This are 11329 crime and will be deleted from the dataset.
 ```{r}
 #number of missing neighbourhoods
 crime_cat
@@ -165,3 +164,5 @@ save(df_cleaned,file="../../gen/data-preparation/output/data_cleaned.RData")
 
 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+```
