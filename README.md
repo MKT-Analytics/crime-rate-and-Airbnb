@@ -31,25 +31,12 @@ The analysis revealed that the safest to the most dangerous neigbourhoods in New
 5. Manhattan: 16781
 
 ## Repository overview
-├── README.md
-├── data
-    ├──Inside-Airbnb
-    ├──NYC-OpenData
-├── gen
-│   ├── data-preparation
-└── src
-    ├── analysis
-    ├── data-preparation
 <img width="300" alt="2022-03-27 (1)" src="https://user-images.githubusercontent.com/99139820/160283444-0dfc0696-5b5a-48a2-8f0b-3c41c0b768d0.png">
 
-
-
-
-
 ## Running instructions
-*Explain to potential users how to run/replicate your workflow. If necessary, touch upon the required input data, which secret credentials are required (and how to obtain them), which software tools are needed to run the workflow (including links to the installation instructions), and how to run the workflow.*
+For the files to run correctly, Make should be run in git bash (for Windows users) or in terminal (for Mac users) where the folder of 'crime-rate-and-Airbnb' is in the current directory. For the data preparation and analysis R-stuido is needed. Next to that, for the code to run properly, the following packages are needed: 
 
-
+<img width="300" alt="2022-03-27 (2)" src="https://user-images.githubusercontent.com/99139820/160284966-30e57a21-2f61-4e53-9ccd-b5a0cd51edee.png">
 
 ## Sources
 Lens, M. C. and Meltzer, R. (2016). Is crime bad for business? crime and commercial property values in new york city. Journal of Regional Science, 56(3):442-470.
