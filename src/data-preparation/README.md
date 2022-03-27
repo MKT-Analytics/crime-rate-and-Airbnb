@@ -159,7 +159,7 @@ crime_data_cleaned <-crime_data[!(crime_data$BORO_NM ==''),]
 ## Store the cleaned data
 ```{r}
 dir.create('../../gen/data-preparation/output/')
-save(df_cleaned,file="../../gen/data-preparation/output/data_cleaned.RData")
+save(crime_data_cleaned,file="../../gen/data-preparation/output/data_cleaned.RData")
 ```
 
 
