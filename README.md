@@ -36,11 +36,13 @@ The analysis revealed that the safest to the most dangerous neigbourhoods in New
     ├──Inside-Airbnb
     ├──NYC-OpenData
 ├── gen
-│├── data-preparation
+│   ├── data-preparation
 └── src
     ├── analysis
     ├── data-preparation
-<img width="300" alt="2022-03-27" src="https://user-images.githubusercontent.com/99139820/160283375-686ee115-b247-41c8-a674-044f1854f1b0.png">
+<img width="300" alt="2022-03-27 (1)" src="https://user-images.githubusercontent.com/99139820/160283444-0dfc0696-5b5a-48a2-8f0b-3c41c0b768d0.png">
+
+
 
 
 
